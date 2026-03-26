@@ -39,7 +39,7 @@ def denoise_matrix(X, threshold=10):
         bin_size = int(np.round(conn_stabilized.shape[1] / bin_divisor))
     else:
         bin_divisor = 1
-        bin_size = 1
+        bin_size = int(np.round(conn_stabilized.shape[1] / bin_divisor))
 
     X_d_filt = np.zeros((conn_stabilized.shape))
     spectrum = []
