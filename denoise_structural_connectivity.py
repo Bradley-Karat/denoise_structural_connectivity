@@ -4,13 +4,15 @@ import bipca
 from bipca import plotting
 from bipca import utils
 
-def denoise_matrix(X, threshold=10):
+def denoise_matrix(X, threshold=10, unscale=False):
 
     '''
     X: array (M, M, N)
         Input streamline count matrix, where M is number of regions and N is number of subjects
     Threshold: int
         Global nonzero threshold for the rows and columns of the matrix (default=10)
+    unscale: bool
+        Unscale the denoised matrix to map back to the original scale (default=False)
 
     Returns:
     X_d: array (M, M, N)
@@ -58,7 +60,7 @@ def denoise_matrix(X, threshold=10):
 
         ind_bin = ind_hold[start_ind:end_ind]
 
-        X_d_filt[:,ind_bin] = op.fit_transform(conn_stabilized[:,ind_bin]) # take the count data as input and run bipca
+        X_d_filt[:,ind_bin] = op.fit_transform(conn_stabilized[:,ind_bin],unscale=unscale) # take the count data as input and run bipca
 
         op.get_plotting_spectrum(get_raw=True) # get the fitting parameters
         spectrum.append(op) # get the fitting parameters
