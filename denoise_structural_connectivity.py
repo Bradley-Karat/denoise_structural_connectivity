@@ -4,7 +4,7 @@ import bipca
 from bipca import plotting
 from bipca import utils
 
-def denoise_matrix(X, threshold=10, unscale=False):
+def denoise_matrix(X, threshold=10, unscale=True):
 
     '''
     X: array (M, M, N)
@@ -12,7 +12,7 @@ def denoise_matrix(X, threshold=10, unscale=False):
     Threshold: int
         Global nonzero threshold for the rows and columns of the matrix (default=10)
     unscale: bool
-        Unscale the denoised matrix to map back to the original scale (default=False)
+        Unscale the denoised matrix to map back to the original scale (default=True)
 
     Returns:
     X_d: array (M, M, N)
